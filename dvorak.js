@@ -17,7 +17,7 @@ var generateKeys = function () {
       row.append('<div id="key-' + i + '-' + j + '" class="key"></div>');
       key = $('#key-' + i + '-' + j);
       key.append('<input id="keyin-' + i + '-' + j + '" type="text" size="2" ' +
-                 'class="keyfield" />');
+                 'class="keyfield" autocapitalize="off" />');
     }
   }
   
