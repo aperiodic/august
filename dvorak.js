@@ -32,7 +32,7 @@ var score = function () {
     var row = loc[0];
     var col = loc[1];
     var reference = dvorak[row][col];
-    var input = $('#keyin-' + row + '-' + col);
+    var input = $(this).find('.keyfield').first();
     var answer = input.val();
     
     if (reference.indexOf(answer.toLowerCase().trim()) < 0) {
@@ -40,6 +40,19 @@ var score = function () {
       $(this).addClass('wrong');
     }
   });
+  $(this).unbind('click', score);
+  $(this).val('Clear');
+  $(this).bind('click', reset);
+}
+
+var reset = function () {
+  $('.key').each(function () {
+    $(this).removeClass('wrong');    
+    $(this).find('.keyfield').first().val('');
+  });
+  $(this).unbind('click', reset);
+  $(this).val('Finished');
+  $(this).bind('click', score);
 }
 
 $(generateKeys);
